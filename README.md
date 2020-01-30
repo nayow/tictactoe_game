@@ -9,5 +9,6 @@ The best TicTacToe game!
 ________
 
 
-And this is the README to explain how to play it, but you already obviously know!
-Maybe play full-screen for better gameplay ;-)
+Simply run app.rb with ruby in your shell and you're ready to play.
+Useless to explain the rules I guess!
+Play full-screen for greater excitment ;)
