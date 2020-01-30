@@ -1,4 +1,5 @@
 class Show
+
     attr_accessor :tab
 
     def self.header
@@ -48,7 +49,7 @@ class Show
 
     def self.grid(player, position)
 
-        @tab[position] = player.sign
+        @tab[position] = player.sign # remplace le numéro de case par le signe du joueur qui l'a choisi 
 
         puts "           ","",""
         puts "                          |               |               ".colorize(:light_white)

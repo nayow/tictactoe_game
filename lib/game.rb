@@ -26,7 +26,7 @@ class Game
     end
 
     def play_turn
-        @player_turn = players_array[turn_count%2]
+        @player_turn = players_array[turn_count%2] # alterne entre les index 0 et 1 pour avoir les player 1 et 2 respectivement
         puts "           Au tour de #{player_turn.name} de jouer un #{player_turn.sign}"
         print "           Quelle case choisis-tu ? "
         @position_chosen = gets.chomp.to_i
@@ -42,16 +42,20 @@ class Game
     def board_check
         rows = [[1,2,3],[4,5,6],[7,8,9]]
         cols = [[1,4,7],[2,5,8],[3,6,9]]
-        selected_row = (@position_chosen.to_i-1)/3+1
-        selected_col = @position_chosen.to_i-3*(selected_row-1)
+        selected_row = (@position_chosen.to_i-1)/3+1 # ligne correspondante à la case choisie (1,2 ou 3)
+        selected_col = @position_chosen.to_i-3*(selected_row-1) # colonne correspondante à la case choisie (1,2 ou 3)
 
-        if turn_count >= 3
+        if turn_count >= 3 #inutile de verifier avant
             if (board.content(1) != " ") && (board.content(1)==board.content(5)) && (board.content(1)==board.content(9)) then @win=1
             elsif (board.content(3) != " ") && (board.content(3)==board.content(5)) && (board.content(3)==board.content(7)) then @win=1
-            elsif (board.content(rows[selected_row-1][0]) != " ") && (board.content(rows[selected_row-1][0])==board.content(rows[selected_row-1][1])) && (board.content(rows[selected_row-1][0])==board.content(rows[selected_row-1][2])) then @win=1
+            elsif (board.content(rows[selected_row-1][0]) != " ") && (board.content(rows[selected_row-1][0])==board.content(rows[selected_row-1][1])) && (board.content(rows[selected_row-1][0])==board.content(rows[selected_row-1][2])) then @win=1 
             elsif (board.content(cols[selected_col-1][0]) != " ") && (board.content(cols[selected_col-1][0])==board.content(cols[selected_col-1][1])) && (board.content(cols[selected_col-1][0])==board.content(cols[selected_col-1][2])) then @win=1
             end
         end
+        # Ci-dessus les deux premiers ifs testent les deux diagonales sur le modèle case1 = case5 = case9 != 0
+        # les deux suivants testent respectivement la ligne et la colonne correspondantes toutes les deux à la 
+        # case choisie (ligne 2 et colonne 3 pour la case 6 par ex), en checkant l'égalité de la ligne ou de la colonne.
+        # Inutile de tester les autres car seules celles-ci ont pu être modifiées par le choix de case
     end
 
     def is_over?

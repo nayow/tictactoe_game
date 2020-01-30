@@ -6,6 +6,6 @@ class BoardCase
     end
     
 	def add_content(player)
-		@boardcase_content = player.sign
+		@boardcase_content = player.sign #on met le signe du joueur en cours dans l'array
 	end
 end
