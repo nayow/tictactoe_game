@@ -68,9 +68,9 @@ class Game
             puts "                      #{player_turn.name} est le grand gagnant!".colorize(:light_white)
             puts "","#".colorize(:light_red)*75
         else
-            puts "#".colorize(:light_white)*75,""
-            puts "                      Match nul!".colorize(:light_white)
-            puts "","#".colorize(:light_white)*75
+            puts "#".colorize(:light_red)*75,""
+            puts "                                    Match nul!".colorize(:light_white)
+            puts "","#".colorize(:light_red)*75
         end
     end
 
